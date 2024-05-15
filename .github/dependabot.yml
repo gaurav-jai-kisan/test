@@ -39,6 +39,11 @@ updates:
     target-branch: "test"
     schedule:
       interval: "daily"
+  - package-ecosystem: "gomod"
+    directory: "/go"
+    target-branch: "main"
+    schedule:
+      interval: "daily"
   - package-ecosystem: "cargo"
     directory: "/rust"
     target-branch: "test"
