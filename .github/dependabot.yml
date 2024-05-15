@@ -1,0 +1,47 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/.github"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/node"
+    schedule:
+      interval: "daily"
+    target-branch: "test"
+  - package-ecosystem: "npm"
+    directory: "/node"
+    schedule:
+      interval: "daily"
+    target-branch: "main"
+  - package-ecosystem: "pip"
+    directory: "/python"
+    schedule:
+      interval: "daily"
+    target-branch: "test"
+  - package-ecosystem: "maven"
+    directory: "/java"
+    schedule:
+      interval: "daily"
+    target-branch: "test"
+  - package-ecosystem: "bundler"
+    directory: "/ruby"
+    target-branch: "test"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "composer"
+    directory: "/php"
+    target-branch: "test"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "gomod"
+    directory: "/go"
+    target-branch: "test"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "cargo"
+    directory: "/rust"
+    target-branch: "test"
+    schedule:
+      interval: "daily"
+

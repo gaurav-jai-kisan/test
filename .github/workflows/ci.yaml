@@ -1,0 +1,93 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency: build
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      
+      # Setup for Node.js projects
+      - name: Set up Node.js
+        uses: actions/setup-node@v3.1.1
+        with:
+          node-version: '17'
+      
+      # Setup for Python projects
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      # Setup for Java projects
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+      
+      # Setup for Ruby projects
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+      
+      # Setup for PHP projects
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+      
+      # Setup for Go projects
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.17'
+      
+      # Setup for Rust projects
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      # Test steps (generic)
+      - name: Install dependencies and run tests
+        run: |
+          # Replace these commands with the appropriate ones for your project
+          case ${{ runner.os }} in
+            'Linux') 
+              # Linux specific commands
+              ;;
+            'Windows') 
+              # Windows specific commands
+              ;;
+            'macOS') 
+              # macOS specific commands
+              ;;
+          esac
+          
+      # Docker build and test (generic)
+      - name: Build docker image
+        run: docker build -t local .
+      - name: Run tests on Docker
+        run: |
+          docker run -t -v $PWD:/srv -w /srv local \
+            # Replace these commands with the appropriate ones for your project
+            case ${{ runner.os }} in
+              'Linux') 
+                # Linux specific commands
+                ;;
+              'Windows') 
+                # Windows specific commands
+                ;;
+              'macOS') 
+                # macOS specific commands
+                ;;
+            esac
+
